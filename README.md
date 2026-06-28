@@ -1,78 +1,118 @@
-<h1 align="center">Semantic-Aware, Physics-Informed, Geometry-Grounded<br>Weather Video Synthesis</h1>
+<div align="center">
 
-<p align="center">
-  <a href="https://jumponthemoon.github.io/w-crafter/"><img src="https://img.shields.io/badge/🌐%20Project-Page-2f6df0"></a>
-  <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf"><img src="https://img.shields.io/badge/📄%20Paper-PDF-c8743a"></a>
-  <img src="https://img.shields.io/badge/arXiv-coming%20soon-lightgrey">
-  <img src="https://img.shields.io/badge/ECCV-2026-72A350">
-  <img src="https://img.shields.io/badge/Code-coming%20soon-e9b412">
+# Semantic-Aware, Physics-Informed, Geometry-Grounded<br>Weather Video Synthesis
+
+<p>
+  <a href="https://jumponthemoon.github.io/w-crafter/"><img src="https://img.shields.io/badge/🌐_Project-Page-2F6DF0?style=for-the-badge"></a>
+  <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf"><img src="https://img.shields.io/badge/📄_Paper-PDF-C8743A?style=for-the-badge"></a>
+  <a href="#"><img src="https://img.shields.io/badge/arXiv-coming_soon-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white"></a>
+  <img src="https://img.shields.io/badge/ECCV-2026-72A350?style=for-the-badge">
 </p>
 
-<p align="center">
-  <b>Official repository for our ECCV 2026 paper.</b>
+<p>
+<b>Chenghao Qian</b><sup>1</sup> &nbsp;·&nbsp; Nedko Savov<sup>2</sup> &nbsp;·&nbsp; Lingdong Kong<sup>3</sup> &nbsp;·&nbsp; Yeying Jin<sup>3</sup> &nbsp;·&nbsp; Rui Song<sup>4</sup><br>
+Wenjing Li<sup>1,5</sup>* &nbsp;·&nbsp; Zhun Zhong<sup>5</sup>* &nbsp;·&nbsp; Jiaqi Ma<sup>4</sup> &nbsp;·&nbsp; Gustav Markkula<sup>1</sup> &nbsp;·&nbsp; Luc Van Gool<sup>2</sup>
 </p>
 
-<p align="center">
-  <img src="https://jumponthemoon.github.io/w-crafter/static/images/teaser.png" width="100%">
-</p>
+<sub>
+<sup>1</sup>University of Leeds &nbsp;·&nbsp; <sup>2</sup>INSAIT, Sofia University “St. Kliment Ohridski” &nbsp;·&nbsp; <sup>3</sup>National University of Singapore &nbsp;·&nbsp; <sup>4</sup>UCLA &nbsp;·&nbsp; <sup>5</sup>Hefei University of Technology &nbsp;&nbsp;|&nbsp;&nbsp; *Corresponding authors
+</sub>
 
-> **TL;DR** — A controllable weather-synthesis framework that steers an off-the-shelf video editor with three
-> structured priors — **semantics** (what it looks like), **dynamics** (how it evolves), and **geometry**
-> (where it appears) — to produce diverse, physically realistic weather effects on real videos.
+<br><br>
 
-## 🔗 Links
+<img src="https://jumponthemoon.github.io/w-crafter/static/images/teaser.png" width="92%">
 
-- 🌐 **Project page (with demo video):** https://jumponthemoon.github.io/w-crafter/
-- 📄 **Paper:** [PDF](https://jumponthemoon.github.io/w-crafter/static/paper.pdf)
-- 📦 **arXiv:** coming soon
+</div>
 
-## 👥 Authors
+> **TL;DR** — We steer an **off-the-shelf** video diffusion editor with three structured priors —
+> **semantics** (*what* the weather looks like), **dynamics** (*how* it evolves), and **geometry** (*where* it appears)
+> — to synthesize diverse, physically realistic weather on real videos, **without any finetuning**.
 
-Chenghao Qian<sup>1</sup>, Nedko Savov<sup>2</sup>, Lingdong Kong<sup>3</sup>, Yeying Jin<sup>3</sup>, Rui Song<sup>4</sup>,
-Wenjing Li<sup>1,5</sup>\*, Zhun Zhong<sup>5</sup>\*, Jiaqi Ma<sup>4</sup>, Gustav Markkula<sup>1</sup>, Luc Van Gool<sup>2</sup>
+---
 
-<sup>1</sup>University of Leeds, UK &nbsp;·&nbsp; <sup>2</sup>INSAIT, Sofia University “St. Kliment Ohridski” &nbsp;·&nbsp;
-<sup>3</sup>National University of Singapore &nbsp;·&nbsp; <sup>4</sup>University of California, Los Angeles &nbsp;·&nbsp;
-<sup>5</sup>Hefei University of Technology, China
-<br><sub>\* Corresponding authors</sub>
+## 📰 News
 
-## 📝 Abstract
+- **`Jun 2026`** &nbsp;🎉 Paper accepted to **ECCV 2026**!
+- **`Jun 2026`** &nbsp;🌐 [Project page](https://jumponthemoon.github.io/w-crafter/) is live, with the supplementary demo video.
+- **`Soon`** &nbsp;💻 Code & pretrained models — *stay tuned* (⭐ star to get notified).
 
-Weather synthesis aims to add weather effects to input videos while preserving scene identity, structure, and motion.
-The key limitation of existing methods is the lack of diversity in weather appearance and effective control over weather
-dynamics (e.g., temporal evolution and particle motion). To address this, we propose a **Semantic-Aware,
-Physics-Informed, and Geometry-Grounded** framework that steers an off-the-shelf video editor to synthesize diverse
-global appearances and detailed particle dynamics. We factorize synthesis into three conditional signals —
-**semantics** specifies what the weather should look like, **dynamics** governs how it evolves over time, and
-**geometry** determines where it should appear in the scene. Experiments demonstrate that our method produces diverse,
-physically and visually realistic weather effects, and that our synthesized data significantly improves the robustness of
-autonomous-driving semantic segmentation under adverse weather.
+---
 
-## 🚧 Code
+## ✨ Highlights
 
-The code is **coming soon** — we are cleaning it up for release. Please ⭐ **star** and 👁️ **watch** this repository to
-be notified when it lands.
+- 🧩 **Tri-prior interface** — a single, structured conditioning space that factorizes weather into **semantics · dynamics · geometry**, giving precise and interpretable control.
+- 🌦️ **Diverse appearance** — a *semantic-aware* strategy binds the intended weather to scene semantics via a VLM + LLM, producing varied, realistic global appearances.
+- ❄️ **Physical particle dynamics** — a *physics-informed* Gaussian particle field evolves under **gravity, wind, and turbulence**, activating latent weather priors in pretrained editors for dense, coherent particles.
+- 📐 **Geometry grounding** — particles are gravity-aligned and projected with camera intrinsics/extrinsics into particle-augmented depth, ensuring spatially accurate, temporally consistent placement.
+- 🚗 **Useful downstream** — synthesized data improves the robustness of autonomous-driving semantic segmentation under adverse weather.
 
-### Roadmap
+---
+
+## 🎬 Results
+
+<div align="center">
+<img src="https://jumponthemoon.github.io/w-crafter/static/images/results.gif" width="80%">
+<br><sub>Diverse weather synthesized across varied real-world scenes. &nbsp;▶️ <a href="https://jumponthemoon.github.io/w-crafter/">Full demo video on the project page</a></sub>
+</div>
+
+---
+
+## 🧠 Method
+
+<div align="center">
+<img src="https://jumponthemoon.github.io/w-crafter/static/images/architecture.png" width="95%">
+</div>
+
+From an input video, three modules build structured conditioning — **semantic-aware appearance anchoring**
+(VLM/LLM reasoning → appearance anchor), **physics-informed dynamic simulation** (a Gaussian particle field under
+gravity, wind, and turbulence), and **geometry-grounded video synthesis** (geometry assets, alignment, and particle
+projection). The resulting *semantics*, *dynamics*, and *geometry* signals jointly steer a frozen video diffusion model.
+
+---
+
+## 💻 Code
+
+> [!NOTE]
+> The code is **coming soon** — we are cleaning it up for release.
+> Please ⭐ **star** and 👁️ **watch** this repository to be notified when it lands.
+
+**Roadmap**
 
 - [ ] Inference / synthesis pipeline
 - [ ] Pretrained checkpoints
 - [ ] Physics-informed particle simulation module
 - [ ] Geometry grounding & particle projection
-- [ ] Evaluation scripts and benchmarks
-- [ ] Example data and demo notebook
+- [ ] Evaluation scripts & benchmarks
+- [ ] Example data & demo notebook
+
+---
 
 ## 📚 Citation
 
-BibTeX will be added once the proceedings are finalized.
+If you find our work useful, please consider citing (BibTeX will be finalized with the proceedings):
 
 ```bibtex
 % Coming soon.
 ```
 
+---
+
+## ⭐ Star History
+
+<div align="center">
+<a href="https://star-history.com/#Jumponthemoon/Weather-Video-Synthesis&Date">
+  <img src="https://api.star-history.com/svg?repos=Jumponthemoon/Weather-Video-Synthesis&type=Date" width="70%">
+</a>
+</div>
+
+---
+
 ## 🙏 Acknowledgements
 
 This work was funded by the National Natural Science Foundation of China (Nos. 62572166 and 62402157) and the
-Fundamental Research Funds for the Central Universities (No. JZ2025HGTB0219). It was also partially supported by the
-Ministry of Education and Science of Bulgaria (support for INSAIT, part of the Bulgarian National Roadmap for Research
-Infrastructure).
+Fundamental Research Funds for the Central Universities (No. JZ2025HGTB0219), and partially supported by the Ministry of
+Education and Science of Bulgaria (support for INSAIT, part of the Bulgarian National Roadmap for Research Infrastructure).
+
+<div align="center">
+<sub>🌐 <a href="https://jumponthemoon.github.io/w-crafter/">Project Page</a> &nbsp;·&nbsp; 📄 <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf">Paper</a> &nbsp;·&nbsp; ECCV 2026</sub>
+</div>
