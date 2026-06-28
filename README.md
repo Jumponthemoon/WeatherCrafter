@@ -44,7 +44,6 @@ Wenjing Li<sup>1,5</sup>* &nbsp;·&nbsp; Zhun Zhong<sup>5</sup>* &nbsp;·&nbsp; 
 - 🌦️ **Diverse appearance** — a *semantic-aware* strategy binds the intended weather to scene semantics via a VLM + LLM, producing varied, realistic global appearances.
 - ❄️ **Physical particle dynamics** — a *physics-informed* Gaussian particle field evolves under **gravity, wind, and turbulence**, activating latent weather priors in pretrained editors for dense, coherent particles.
 - 📐 **Geometry grounding** — particles are gravity-aligned and projected with camera intrinsics/extrinsics into particle-augmented depth, ensuring spatially accurate, temporally consistent placement.
-- 🚗 **Useful downstream** — synthesized data improves the robustness of autonomous-driving semantic segmentation under adverse weather.
 
 ---
 
@@ -73,17 +72,7 @@ projection). The resulting *semantics*, *dynamics*, and *geometry* signals joint
 ## 💻 Code
 
 > [!NOTE]
-> The code is **coming soon** — we are cleaning it up for release.
-> Please ⭐ **star** and 👁️ **watch** this repository to be notified when it lands.
-
-**Roadmap**
-
-- [ ] Inference / synthesis pipeline
-- [ ] Pretrained checkpoints
-- [ ] Physics-informed particle simulation module
-- [ ] Geometry grounding & particle projection
-- [ ] Evaluation scripts & benchmarks
-- [ ] Example data & demo notebook
+> The code is **coming soon** — stay tuned.
 
 ---
 
@@ -95,24 +84,7 @@ If you find our work useful, please consider citing (BibTeX will be finalized wi
 % Coming soon.
 ```
 
----
-
-## ⭐ Star History
-
 <div align="center">
-<a href="https://star-history.com/#Jumponthemoon/Weather-Video-Synthesis&Date">
-  <img src="https://api.star-history.com/svg?repos=Jumponthemoon/Weather-Video-Synthesis&type=Date" width="70%">
-</a>
-</div>
-
----
-
-## 🙏 Acknowledgements
-
-This work was funded by the National Natural Science Foundation of China (Nos. 62572166 and 62402157) and the
-Fundamental Research Funds for the Central Universities (No. JZ2025HGTB0219), and partially supported by the Ministry of
-Education and Science of Bulgaria (support for INSAIT, part of the Bulgarian National Roadmap for Research Infrastructure).
-
-<div align="center">
+<br>
 <sub>🌐 <a href="https://jumponthemoon.github.io/w-crafter/">Project Page</a> &nbsp;·&nbsp; 📄 <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf">Paper</a> &nbsp;·&nbsp; ECCV 2026</sub>
 </div>
