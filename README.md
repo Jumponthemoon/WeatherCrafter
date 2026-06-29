@@ -20,7 +20,7 @@ Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Ji
 
 <br><br>
 
-<img src="https://jumponthemoon.github.io/w-crafter/static/images/teaser.png" width="92%">
+<img src="assets/teaser.png" width="92%">
 
 </div>
 
@@ -50,7 +50,7 @@ Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Ji
 ## 🎬 Results
 
 <div align="center">
-<img src="https://jumponthemoon.github.io/w-crafter/static/images/results.gif" width="80%">
+<img src="assets/results.gif" width="80%">
 <br><sub>Diverse weather synthesized across varied real-world scenes. &nbsp;▶️ <a href="https://jumponthemoon.github.io/w-crafter/">Full demo video on the project page</a></sub>
 </div>
 
@@ -59,7 +59,7 @@ Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Ji
 ## 🧠 Method
 
 <div align="center">
-<img src="https://jumponthemoon.github.io/w-crafter/static/images/architecture.png" width="95%">
+<img src="assets/architecture.png" width="95%">
 </div>
 
 From an input video, three modules build structured conditioning — **semantic-aware appearance anchoring**
