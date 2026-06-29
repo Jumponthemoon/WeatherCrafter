@@ -10,12 +10,12 @@
 </p>
 
 <p>
-<b>Chenghao Qian</b><sup>1</sup> &nbsp;·&nbsp; Nedko Savov<sup>2</sup> &nbsp;·&nbsp; Lingdong Kong<sup>3</sup> &nbsp;·&nbsp; Yeying Jin<sup>3</sup> &nbsp;·&nbsp; Rui Song<sup>4</sup><br>
-Wenjing Li<sup>1,5</sup>* &nbsp;·&nbsp; Zhun Zhong<sup>5</sup>* &nbsp;·&nbsp; Jiaqi Ma<sup>4</sup> &nbsp;·&nbsp; Gustav Markkula<sup>1</sup> &nbsp;·&nbsp; Luc Van Gool<sup>2</sup>
+<b>Chenghao Qian</b><sup>1</sup> &nbsp;·&nbsp; Nedko Savov<sup>2</sup> &nbsp;·&nbsp; Lingdong Kong<sup>3</sup> &nbsp;·&nbsp; Yeying Jin<sup>3</sup> &nbsp;·&nbsp; Rui Song<sup>5</sup><br>
+Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Jiaqi Ma<sup>5</sup> &nbsp;·&nbsp; Gustav Markkula<sup>1</sup> &nbsp;·&nbsp; Luc Van Gool<sup>2</sup>
 </p>
 
 <sub>
-<sup>1</sup>University of Leeds &nbsp;·&nbsp; <sup>2</sup>INSAIT, Sofia University “St. Kliment Ohridski” &nbsp;·&nbsp; <sup>3</sup>National University of Singapore &nbsp;·&nbsp; <sup>4</sup>UCLA &nbsp;·&nbsp; <sup>5</sup>Hefei University of Technology &nbsp;&nbsp;|&nbsp;&nbsp; *Corresponding authors
+<sup>1</sup>University of Leeds &nbsp;·&nbsp; <sup>2</sup>INSAIT, Sofia University “St. Kliment Ohridski” &nbsp;·&nbsp; <sup>3</sup>National University of Singapore &nbsp;·&nbsp; <sup>4</sup>Hefei University of Technology &nbsp;·&nbsp; <sup>5</sup>UCLA
 </sub>
 
 <br><br>
