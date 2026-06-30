@@ -4,8 +4,7 @@
 
 <p>
   <a href="https://jumponthemoon.github.io/w-crafter/"><img src="https://img.shields.io/badge/🌐_Project-Page-2F6DF0?style=for-the-badge"></a>
-  <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf"><img src="https://img.shields.io/badge/📄_Paper-PDF-C8743A?style=for-the-badge"></a>
-  <a href="#"><img src="https://img.shields.io/badge/arXiv-coming_soon-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white"></a>
+  <a href="https://arxiv.org/pdf/2606.29020"><img src="https://img.shields.io/badge/arXiv-2606.29020-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white"></a>
   <img src="https://img.shields.io/badge/ECCV-2026-72A350?style=for-the-badge">
 </p>
 
@@ -69,22 +68,22 @@ projection). The resulting *semantics*, *dynamics*, and *geometry* signals joint
 
 ---
 
-## 💻 Code
-
-> [!NOTE]
-> The code is **coming soon** — stay tuned.
-
----
-
 ## 📚 Citation
 
-If you find our work useful, please consider citing (BibTeX will be finalized with the proceedings):
+If you find our work useful, please consider citing:
 
 ```bibtex
-% Coming soon.
+@inproceedings{qian2026weathervid,
+  title     = {Semantic-Aware, Physics-Informed, Geometry-Grounded Weather Video Synthesis},
+  author    = {Qian, Chenghao and Savov, Nedko and Kong, Lingdong and Jin, Yeying and
+               Song, Rui and Li, Wenjing and Zhong, Zhun and Ma, Jiaqi and
+               Markkula, Gustav and Van Gool, Luc},
+  booktitle = {ECCV},
+  year      = {2026}
+}
 ```
 
 <div align="center">
 <br>
-<sub>🌐 <a href="https://jumponthemoon.github.io/w-crafter/">Project Page</a> &nbsp;·&nbsp; 📄 <a href="https://jumponthemoon.github.io/w-crafter/static/paper.pdf">Paper</a> &nbsp;·&nbsp; ECCV 2026</sub>
+<sub>🌐 <a href="https://jumponthemoon.github.io/w-crafter/">Project Page</a> &nbsp;·&nbsp; 📄 <a href="https://arxiv.org/pdf/2606.29020">arXiv</a> &nbsp;·&nbsp; ECCV 2026</sub>
 </div>
