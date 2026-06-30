@@ -78,7 +78,7 @@ If you find our work useful, please consider citing:
   author    = {Qian, Chenghao and Savov, Nedko and Kong, Lingdong and Jin, Yeying and
                Song, Rui and Li, Wenjing and Zhong, Zhun and Ma, Jiaqi and
                Markkula, Gustav and Van Gool, Luc},
-  booktitle = {ECCV},
+  booktitle = {European Conference on Computer Vision (ECCV)},
   year      = {2026}
 }
 ```
