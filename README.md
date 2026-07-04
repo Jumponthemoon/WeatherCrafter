@@ -33,7 +33,7 @@ Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Ji
 
 - **`Jun 2026`** &nbsp;🎉 Paper accepted to **ECCV 2026**!
 - **`Jun 2026`** &nbsp;🌐 [Project page](https://jumponthemoon.github.io/w-crafter/) is live, with the supplementary demo video.
-- **`Soon`** &nbsp;💻 Code & pretrained models — *stay tuned* (⭐ star to get notified).
+- **`Soon`** &nbsp;💻 Code & pretrained models — *stay tuned*.
 
 ---
 
