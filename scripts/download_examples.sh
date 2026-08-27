@@ -4,17 +4,19 @@
 #   bash scripts/download_examples.sh          # both clips
 #   bash scripts/download_examples.sh drone    # just one
 #
-# Point it somewhere else with:
-#   export WEATHERCRAFTER_EXAMPLES_URL="https://example.com/path"
+# Clips are hosted on Google Drive. To mirror them somewhere else, point the
+# script at a directory containing drone.mp4 / driving.mp4:
+#
+#   export WEATHERCRAFTER_EXAMPLES_URL="https://example.com/clips"
 set -euo pipefail
 
-BASE_URL="${WEATHERCRAFTER_EXAMPLES_URL:-https://huggingface.co/datasets/Jumponthemoon/weathercrafter-examples/resolve/main}"
-
-# name  sha256
+# name  sha256  google-drive-file-id
 CLIPS=(
-  "drone   16aa1075bf66c9d05fdfe70108ba531a32156a7813983f8aebf5453311d23acd"
-  "driving 08e89503d52f2796303fa30c8d0e6db6535ddab7ddb4447965ea9b4171da1e17"
+  "drone   16aa1075bf66c9d05fdfe70108ba531a32156a7813983f8aebf5453311d23acd REPLACE_WITH_DRONE_FILE_ID"
+  "driving 08e89503d52f2796303fa30c8d0e6db6535ddab7ddb4447965ea9b4171da1e17 REPLACE_WITH_DRIVING_FILE_ID"
 )
+
+BASE_URL="${WEATHERCRAFTER_EXAMPLES_URL:-}"
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
@@ -23,7 +25,7 @@ want="${1:-all}"
 fetched=0
 
 for entry in "${CLIPS[@]}"; do
-    read -r name sha <<<"$entry"
+    read -r name sha gid <<<"$entry"
     [ "$want" != "all" ] && [ "$want" != "$name" ] && continue
 
     dest="data/$name/$name.mp4"
@@ -33,13 +35,35 @@ for entry in "${CLIPS[@]}"; do
         continue
     fi
 
+    if [ -n "$BASE_URL" ]; then
+        url="$BASE_URL/$name.mp4"
+    elif [[ "$gid" == REPLACE_WITH_* ]]; then
+        echo "[error] no download source configured for '$name'." >&2
+        echo "        Either set WEATHERCRAFTER_EXAMPLES_URL to a mirror, or fill in" >&2
+        echo "        the Google Drive file IDs at the top of this script." >&2
+        echo "        See data/README.md to prepare the clip from its source instead." >&2
+        exit 1
+    else
+        url="https://drive.google.com/uc?export=download&id=$gid"
+    fi
+
     mkdir -p "data/$name"
     echo "[get]   $name.mp4"
-    if ! curl -fL --progress-bar "$BASE_URL/$name.mp4" -o "$dest.part"; then
+    if ! curl -fL --progress-bar "$url" -o "$dest.part"; then
         rm -f "$dest.part"
         echo "[error] download failed for $name" >&2
-        echo "        Check WEATHERCRAFTER_EXAMPLES_URL, or see data/README.md" >&2
-        echo "        for how to prepare this clip yourself." >&2
+        echo "        See data/README.md for how to prepare this clip yourself." >&2
+        exit 1
+    fi
+
+    # Google Drive answers with an HTML interstitial when a file is rate-limited
+    # or needs a virus-scan confirmation, which curl happily saves as a "success".
+    if head -c 512 "$dest.part" | grep -qi "<!doctype html\|<html"; then
+        rm -f "$dest.part"
+        echo "[error] got an HTML page instead of $name.mp4." >&2
+        echo "        Google Drive throttles automated downloads; try again later," >&2
+        echo "        download it manually to $dest, or use a mirror via" >&2
+        echo "        WEATHERCRAFTER_EXAMPLES_URL." >&2
         exit 1
     fi
 

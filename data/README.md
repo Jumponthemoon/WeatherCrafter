@@ -37,20 +37,31 @@ data/
 
 Two clips are used throughout the README and the paper figures:
 
-| Clip | Scene | Resolution |
-|------|-------|-----------|
-| `drone` | aerial shot of a large landmark | 896x504 |
-| `driving` | ego-view of a city intersection | 756x504 |
+| Clip | Scene | Resolution | Direct link |
+|------|-------|-----------|-------------|
+| `drone` | aerial shot of a large landmark | 896x504 | _(add Drive link)_ |
+| `driving` | ego-view of a city intersection | 756x504 | _(add Drive link)_ |
 
-Both are 75 frames at 15 fps, ready for `preprocess`. They are hosted outside
-this repository — fetch them with:
+Both are 75 frames at 15 fps, ready for `preprocess`. They are hosted on Google
+Drive rather than in this repository — fetch them with:
 
 ```bash
 bash scripts/download_examples.sh          # both
 bash scripts/download_examples.sh drone    # just one
 ```
 
-The script verifies checksums and skips clips you already have. Then:
+The script verifies SHA-256 checksums and skips clips you already have.
+
+If Google Drive refuses the automated request — it throttles them, and answers
+with an HTML page rather than the file — download the clips by hand from the
+links below and save them as `data/drone/drone.mp4` and
+`data/driving/driving.mp4`. Or mirror them somewhere and point the script at it:
+
+```bash
+export WEATHERCRAFTER_EXAMPLES_URL="https://example.com/clips"
+```
+
+Then:
 
 ```bash
 python -m weathercrafter pipeline --dataset_name drone \
