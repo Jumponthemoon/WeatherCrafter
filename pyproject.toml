@@ -60,3 +60,9 @@ Repository = "https://github.com/Jumponthemoon/WeatherCrafter"
 
 [tool.hatch.build.targets.wheel]
 packages = ["weathercrafter", "src/depth_anything_3"]
+
+# The `synthesis` extra pins diffsynth to a git commit, which is a PEP 508 direct
+# reference. Hatchling rejects those unless this is set -- and it validates every
+# extra while generating metadata, so without it even `pip install -e .` fails.
+[tool.hatch.metadata]
+allow-direct-references = true
