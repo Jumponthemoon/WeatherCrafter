@@ -35,20 +35,25 @@ data/
 
 ## Example clips
 
-Two clips are used throughout the README and the paper figures: a driving scene
-(`waymo_172`, a San Francisco intersection) and an aerial landmark scene
-(`colosseum`). They are hosted outside this repository — fetch them with:
+Two clips are used throughout the README and the paper figures:
+
+| Clip | Scene | Resolution |
+|------|-------|-----------|
+| `drone` | aerial shot of a large landmark | 896x504 |
+| `driving` | ego-view of a city intersection | 756x504 |
+
+Both are 75 frames at 15 fps, ready for `preprocess`. They are hosted outside
+this repository — fetch them with:
 
 ```bash
-bash scripts/download_examples.sh              # both
-bash scripts/download_examples.sh colosseum    # just one
+bash scripts/download_examples.sh          # both
+bash scripts/download_examples.sh drone    # just one
 ```
 
-Both are 75 frames at 15 fps, ready for `preprocess`. The script verifies
-checksums and skips clips you already have. Then:
+The script verifies checksums and skips clips you already have. Then:
 
 ```bash
-python -m weathercrafter pipeline --dataset_name colosseum \
+python -m weathercrafter pipeline --dataset_name drone \
     --target_weather snowy --appearance_stage medium --particle_severity moderate
 ```
 
@@ -56,19 +61,22 @@ python -m weathercrafter pipeline --dataset_name colosseum \
 
 If the download is unavailable, or you would rather source the data directly:
 
-**`waymo_172`** — from the [Waymo Open Dataset](https://waymo.com/open/). Register,
-accept the license, and download a `segment-*.tfrecord` from the Perception set.
-Export 75 consecutive front-camera frames, then either drop them into
-`data/waymo_172/images/` or encode them:
+**`driving`** — the clip we use comes from the
+[Waymo Open Dataset](https://waymo.com/open/). Register, accept the license, and
+download a `segment-*.tfrecord` from the Perception set. Export 75 consecutive
+front-camera frames, then either drop them into `data/driving/images/` or encode
+them:
 
 ```bash
 ffmpeg -framerate 15 -i frames/%03d.jpg -frames:v 75 \
-       -c:v libx264 -crf 20 -pix_fmt yuv420p data/waymo_172/waymo_172.mp4
+       -c:v libx264 -crf 20 -pix_fmt yuv420p data/driving/driving.mp4
 ```
 
-**`colosseum`** — a 5-second aerial shot of the Colosseum. Any aerial clip of a
-large landmark with visible ground works as a substitute; the scene is only there
-to show that the method is not driving-specific.
+Any forward-facing dashcam or ego-view clip works as a substitute.
+
+**`drone`** — a 5-second aerial shot of a large landmark. Any aerial clip with
+visible ground works; the scene is only there to show that the method is not
+driving-specific.
 
 Any clip of your own works just as well — nothing in the pipeline is tied to these
 two.

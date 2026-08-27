@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Fetch the example clips used in the README into data/.
 #
-#   bash scripts/download_examples.sh              # both clips
-#   bash scripts/download_examples.sh colosseum    # just one
+#   bash scripts/download_examples.sh          # both clips
+#   bash scripts/download_examples.sh drone    # just one
 #
 # Point it somewhere else with:
 #   export WEATHERCRAFTER_EXAMPLES_URL="https://example.com/path"
@@ -12,8 +12,8 @@ BASE_URL="${WEATHERCRAFTER_EXAMPLES_URL:-https://huggingface.co/datasets/Jumpont
 
 # name  sha256
 CLIPS=(
-  "colosseum 16aa1075bf66c9d05fdfe70108ba531a32156a7813983f8aebf5453311d23acd"
-  "waymo_172 08e89503d52f2796303fa30c8d0e6db6535ddab7ddb4447965ea9b4171da1e17"
+  "drone   16aa1075bf66c9d05fdfe70108ba531a32156a7813983f8aebf5453311d23acd"
+  "driving 08e89503d52f2796303fa30c8d0e6db6535ddab7ddb4447965ea9b4171da1e17"
 )
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -60,7 +60,7 @@ for entry in "${CLIPS[@]}"; do
 done
 
 if [ "$fetched" -eq 0 ]; then
-    echo "Unknown clip '$want'. Available: colosseum, waymo_172" >&2
+    echo "Unknown clip '$want'. Available: drone, driving" >&2
     exit 1
 fi
 
@@ -68,7 +68,7 @@ cat <<'EOF'
 
 Done. Next:
 
-    python -m weathercrafter pipeline --dataset_name colosseum \
+    python -m weathercrafter pipeline --dataset_name drone \
         --target_weather snowy --appearance_stage medium --particle_severity moderate
 
 Note: these clips come from third-party sources with their own license terms --
