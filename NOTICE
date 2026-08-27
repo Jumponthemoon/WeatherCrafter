@@ -1,0 +1,41 @@
+WeatherCrafter
+Copyright (c) 2025-2026 the WeatherCrafter authors.
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+------------------------------------------------------------------------------
+This product includes and/or depends on third-party software:
+
+1. Depth Anything 3  (vendored under src/depth_anything_3/)
+   Copyright (c) 2025 ByteDance Ltd. and/or its affiliates.
+   Licensed under the Apache License, Version 2.0.
+   https://github.com/ByteDance-Seed/Depth-Anything-3
+
+   MODIFICATIONS (per Apache-2.0 section 4(b)):
+
+   a. src/depth_anything_3/utils/export/depth_vis.py
+      Upstream writes a side-by-side [RGB | depth] JPEG per frame. This copy
+      writes the depth visualisation alone, as PNG. The `simulation` stage
+      blends these frames with the particle depth map and requires a
+      single-panel image of matching dimensions, so the upstream two-panel
+      JPEG output is not usable here.
+
+   b. src/depth_anything_3/utils/export/npz.py
+      Depth arrays are rounded to 6 decimals instead of 8, reducing the size
+      of the exported point maps.
+
+   c. Removed, as unused by this project: `app/` and `services/` (the Gradio
+      demo and its HTTP service layer) and the standalone `cli.py`.
+
+   No other files were altered. Diffing this directory against upstream
+   depth-anything-3 will also surface unrelated version drift.
+
+2. DiffSynth-Studio / Wan2.1-VACE  (used by the `synthesis` stage at runtime;
+   weathercrafter/vace_runner.py is derived from DiffSynth-Studio's run_vace.py)
+   Licensed under the Apache License, Version 2.0.
+   https://github.com/modelscope/DiffSynth-Studio
+   https://github.com/Wan-Video
+
+3. FLUX.1 Kontext (Black Forest Labs) and OpenAI GPT-4.1 are used via their
+   respective hosted APIs by the `anchoring` stage; no code is redistributed.
+   Their use is governed by the providers' own terms of service.

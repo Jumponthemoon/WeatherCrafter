@@ -1,0 +1,23 @@
+name: weathercrafter
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      # Pin the torch stack that works for BOTH Depth Anything 3 and VACE/diffsynth.
+      # A bare `torch>=2` resolves to a newer build that breaks diffsynth, so we pin
+      # torch 2.5.1 + cu124. Adjust the cu124 index below to match your CUDA.
+      - --extra-index-url https://download.pytorch.org/whl/cu124
+      - torch==2.5.1+cu124
+      - torchvision==0.20.1+cu124
+      # weathercrafter + vendored DA3. The `geometry` extra adds xformers/pycolmap,
+      # which auto-match torch 2.5.1.
+      - -e .[geometry]
+      # The synthesis (VACE) stage needs diffsynth. Install it after the env is
+      # created, because it requires --no-build-isolation:
+      #   pip install --no-build-isolation -e ".[synthesis]"
+      # (--no-build-isolation: diffsynth's setup.py imports pkg_resources, which new
+      #  setuptools drops from the isolated build env. If a diffsynth is already
+      #  installed, add --force-reinstall -- the pinned git commit and the PyPI
+      #  release both report version 1.1.8, so pip otherwise silently skips it.)

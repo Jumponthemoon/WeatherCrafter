@@ -1,0 +1,57 @@
+# --- secrets (never commit) ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# --- unpublished manuscripts / internal notes ---
+*.pdf
+develop.md
+notes/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- environments ---
+.venv/
+venv/
+env/
+
+# --- input data & generated output (kept as empty dirs via .gitkeep) ---
+/data/*
+!/data/.gitkeep
+/output/*
+!/output/.gitkeep
+
+# --- model weights & caches ---
+/models
+/models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+.cache/
+
+# --- media (assets/ is whitelisted below for the README demo) ---
+*.mp4
+*.mov
+*.avi
+*.zip
+!/assets/**
+
+# --- generated run artifacts ---
+batch_results.json
+
+# --- OS / editor ---
+.DS_Store
+*.swp
+.idea/
+.vscode/
