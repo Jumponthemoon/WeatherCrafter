@@ -28,6 +28,8 @@ env/
 # --- input data & generated output (kept as empty dirs via .gitkeep) ---
 /data/*
 !/data/.gitkeep
+!/data/README.md
+!/data/examples/
 /output/*
 !/output/.gitkeep
 
