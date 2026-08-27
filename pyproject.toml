@@ -22,6 +22,8 @@ classifiers = [
 dependencies = [
     "torch>=2",
     "torchvision",
+    # diffsynth (synthesis stage) breaks on transformers 5.x.
+    "transformers<5",
     "einops",
     "safetensors",
     "huggingface_hub",
@@ -37,19 +39,21 @@ dependencies = [
     "openai",
     "requests",
     "omegaconf",
+    # Imported by the vendored Depth Anything 3: export/gs.py, utils/sh_helpers.py,
+    # and utils/pose_align.py respectively. Pulled in by `depth_anything_3.api`.
+    "moviepy==1.0.3",
+    "e3nn",
+    "evo",
 ]
 
 [project.optional-dependencies]
 # Vendored Depth Anything 3 pulls these in for point-map export / attention kernels.
 geometry = ["xformers", "pycolmap"]
-# The synthesis (VACE) stage. Pinned to a known-good commit: the PyPI release and
-# this commit both report version 1.1.8, so an existing install is silently kept
-# unless you add --force-reinstall. Needs --no-build-isolation (see README).
-synthesis = [
-    "diffsynth @ git+https://github.com/modelscope/DiffSynth-Studio.git@8332ece",
-    "modelscope",
-    "ftfy",
-]
+# Runtime deps of the synthesis stage other than diffsynth itself. diffsynth is
+# NOT listed here: it must be installed with --no-build-isolation (its setup.py
+# imports pkg_resources), and that flag cannot be applied to this package as well,
+# because hatchling relies on the isolated build env. See README for the command.
+synthesis = ["modelscope", "ftfy"]
 
 [project.scripts]
 weathercrafter = "weathercrafter.cli:main"

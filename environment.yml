@@ -5,6 +5,9 @@ dependencies:
   - python=3.10
   - pip
   - pip:
+      # setuptools 81 removed pkg_resources, which diffsynth's setup.py imports.
+      # Without this pin the synthesis install fails with ModuleNotFoundError.
+      - setuptools<81
       # Pin the torch stack that works for BOTH Depth Anything 3 and VACE/diffsynth.
       # A bare `torch>=2` resolves to a newer build that breaks diffsynth, so we pin
       # torch 2.5.1 + cu124. Adjust the cu124 index below to match your CUDA.
@@ -14,10 +17,7 @@ dependencies:
       # weathercrafter + vendored DA3. The `geometry` extra adds xformers/pycolmap,
       # which auto-match torch 2.5.1.
       - -e .[geometry]
-      # The synthesis (VACE) stage needs diffsynth. Install it after the env is
-      # created, because it requires --no-build-isolation:
-      #   pip install --no-build-isolation -e ".[synthesis]"
-      # (--no-build-isolation: diffsynth's setup.py imports pkg_resources, which new
-      #  setuptools drops from the isolated build env. If a diffsynth is already
-      #  installed, add --force-reinstall -- the pinned git commit and the PyPI
-      #  release both report version 1.1.8, so pip otherwise silently skips it.)
+      # The synthesis (VACE) stage needs diffsynth. Install it separately, after
+      # the env exists -- see README. It must skip build isolation so its setup.py
+      # can reach the pinned setuptools above, and that flag cannot be applied to
+      # this package too (hatchling needs the isolated build env).
