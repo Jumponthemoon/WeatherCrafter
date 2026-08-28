@@ -142,11 +142,4 @@ If you find our work useful, please consider citing:
 
 ---
 
-## 📄 License
 
-Apache-2.0. This project vendors a patched
-[Depth Anything 3](https://github.com/ByteDance-Seed/Depth-Anything-3) (Apache-2.0) under
-`src/depth_anything_3/`; the modifications are itemised in [NOTICE](NOTICE). The
-synthesis stage uses [DiffSynth-Studio](https://github.com/modelscope/DiffSynth-Studio)
-and [Wan2.1-VACE](https://github.com/Wan-Video) at inference time, and the anchoring
-stage calls the OpenAI and Black Forest Labs APIs.
