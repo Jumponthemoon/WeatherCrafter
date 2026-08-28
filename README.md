@@ -1,6 +1,6 @@
 <div align="center">
   
-## 🪄 WeatherCrafter
+# 🪄 WeatherCrafter
 ## Semantic-Aware, Physics-Informed, Geometry-Grounded<br>Weather Video Synthesis
 
 <p align="center">
@@ -13,16 +13,10 @@
   <img src="https://img.shields.io/badge/ECCV-2026-green" alt="ECCV 2026">
 </p>
 <p>
-<b>Chenghao Qian</b><sup>1</sup> &nbsp;·&nbsp; Nedko Savov<sup>2</sup> &nbsp;·&nbsp; Lingdong Kong<sup>3</sup> &nbsp;·&nbsp; Yeying Jin<sup>3</sup> &nbsp;·&nbsp; Rui Song<sup>5</sup><br>
-Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Jiaqi Ma<sup>5</sup> &nbsp;·&nbsp; Gustav Markkula<sup>1</sup> &nbsp;·&nbsp; Luc Van Gool<sup>2</sup>
-</p>
-<p>
-<sup>1</sup>University of Leeds &nbsp;·&nbsp;
-<sup>2</sup>INSAIT &nbsp;·&nbsp;
-<sup>3</sup>National University of Singapore &nbsp;·&nbsp;
-<sup>4</sup>Hefei University of Technology &nbsp;·&nbsp;
-<sup>5</sup>UCLA
-</p>
+
+
+
+
 <br>
 <img width="1100" height="158" alt="demo4_snow (1)" src="https://github.com/user-attachments/assets/2e8fec83-dcb8-4f0e-b0c1-b389e1b4c1b1" />
 <img width="1100" height="158" alt="demo4_rain" src="https://github.com/user-attachments/assets/81639c2a-8e38-4de0-9de3-95f515fae4d4" />
