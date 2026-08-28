@@ -34,12 +34,21 @@ def resize_shortest_side(img: Image.Image, target_size: int) -> Image.Image:
 
 
 def resize_directory(dir_path: str, target_size: int) -> None:
-    """Resize every image in ``dir_path`` in place."""
+    """Resize every image in ``dir_path`` in place, leaving correctly-sized ones alone.
+
+    Images already at ``target_size`` are skipped rather than rewritten. Saving one
+    back over its own path would destroy it: ``Image.open`` is lazy, so PIL truncates
+    the file before reading the pixels it still needs, and reads back nothing.
+    """
     for name in sorted(os.listdir(dir_path)):
         if not name.lower().endswith(IMAGE_EXTENSIONS):
             continue
         path = os.path.join(dir_path, name)
-        resize_shortest_side(Image.open(path), target_size).save(path)
+        with Image.open(path) as img:
+            if min(img.size) == target_size:
+                continue
+            resized = resize_shortest_side(img, target_size)
+        resized.save(path)
 
 
 def extract_frames(input_video: str, output_dir: str, fps: int, max_frames: int) -> None:
