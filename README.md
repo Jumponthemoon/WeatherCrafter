@@ -17,13 +17,9 @@
 <b>Chenghao Qian</b><sup>1</sup> &nbsp;·&nbsp; Nedko Savov<sup>2</sup> &nbsp;·&nbsp; Lingdong Kong<sup>3</sup> &nbsp;·&nbsp; Yeying Jin<sup>3</sup> &nbsp;·&nbsp; Rui Song<sup>5</sup><br>
 Wenjing Li<sup>1,4</sup> &nbsp;·&nbsp; Zhun Zhong<sup>4</sup> &nbsp;·&nbsp; Jiaqi Ma<sup>5</sup> &nbsp;·&nbsp; Gustav Markkula<sup>1</sup> &nbsp;·&nbsp; Luc Van Gool<sup>2</sup>
 </p>
-<p>
-<sup>1</sup>University of Leeds &nbsp;·&nbsp;
-<sup>2</sup>INSAIT &nbsp;·&nbsp;
-<sup>3</sup>National University of Singapore &nbsp;·&nbsp;
-<sup>4</sup>Hefei University of Technology &nbsp;·&nbsp;
-<sup>5</sup>UCLA
-</p>
+
+<img width="570" height="105" alt="Picture2_white" src="https://github.com/user-attachments/assets/15e43747-df6b-46c6-8da1-20ea9bf21f94" />
+
 
 
 <br>
