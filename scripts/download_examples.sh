@@ -95,6 +95,4 @@ Done. Next:
     python -m weathercrafter pipeline --dataset_name drone \
         --target_weather snowy --appearance_stage medium --particle_severity moderate
 
-Note: these clips come from third-party sources with their own license terms --
-see data/README.md before redistributing them or results derived from them.
 EOF

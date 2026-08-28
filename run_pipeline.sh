@@ -10,7 +10,7 @@
 # Prerequisites:
 #   - conda activate weathercrafter  &&  pip install -e ".[synthesis]"
 #   - an input video at data/<dataset>/<dataset>.mp4
-#   - API keys exported (e.g. `source .env`): OPENAI_API_KEY, BFL_API_KEY
+#   - API keys exported in this shell: OPENAI_API_KEY, BFL_API_KEY
 set -euo pipefail
 
 dataset_name="mycity"          # data/<dataset_name>/<dataset_name>.mp4
