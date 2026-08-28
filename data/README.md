@@ -39,8 +39,8 @@ Two clips are used throughout the README and the paper figures:
 
 | Clip | Scene | Resolution | Direct link |
 |------|-------|-----------|-------------|
-| `drone` | aerial shot of a large landmark | 896x504 | _(add Drive link)_ |
-| `driving` | ego-view of a city intersection | 756x504 | _(add Drive link)_ |
+| `drone` | aerial shot of a large landmark | 896x504 | [download](https://drive.google.com/file/d/1yGe_Egw5qp_CiCglDivyohrdltchKw8P/view?usp=sharing) |
+| `driving` | ego-view of a city intersection | 756x504 | [download](https://drive.google.com/file/d/1OY70USlbAXP2hbmeHNBSHhBTzhv8PCrq/view?usp=sharing) |
 
 Both are 75 frames at 15 fps, ready for `preprocess`. They are hosted on Google
 Drive rather than in this repository — fetch them with:
