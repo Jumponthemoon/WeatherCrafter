@@ -38,6 +38,7 @@ We steer an **off-the-shelf** video diffusion editor with three structured prior
 - 🌦️ **Diverse appearance** — a *semantic-aware* strategy binds the intended weather to scene semantics via a VLM + LLM, producing varied, realistic global appearances.
 - ❄️ **Physical particle dynamics** — a *physics-informed* Gaussian particle field evolves under **gravity, wind, and turbulence**, activating latent weather priors in pretrained editors for dense, coherent particles.
 - 📐 **Geometry grounding** — particles are gravity-aligned and projected with camera intrinsics/extrinsics into particle-augmented depth, ensuring spatially accurate, temporally consistent placement.
+> ⭐ **If you like our work or find it useful, please give us a star or cite below. Thanks!**
 
 ---
 
@@ -49,8 +50,16 @@ We steer an **off-the-shelf** video diffusion editor with three structured prior
 - **`Aug 2026`** &nbsp;✅ We have halved the inference time. Each clip now takes only ~20 mins.
 
 ---
+## 📋 Requirements
 
-
+- **GPU** — 48 GB recommended; synthesis peaks around 40 GB at 480×832. Measured on a
+  single RTX A6000. On smaller cards, `WEATHERCRAFTER_VACE_VRAM_LIMIT_GB` offloads part
+  of the model to CPU, trading speed for headroom.
+- **Disk** — ~80 GB for the model weights, ideally on a fast local disk since loading is
+  I/O-bound.
+- **RAM** — 32 GB minimum, 64 GB comfortable.
+- **CUDA 12.4**, **Python 3.10–3.12**.
+- **OpenAI and Black Forest Labs API keys**, for the `anchoring` stage only.
 
 ## 🛠️ Installation
 
