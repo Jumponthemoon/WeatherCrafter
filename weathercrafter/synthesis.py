@@ -23,8 +23,14 @@ VACE_RUNNER = os.path.abspath(os.path.join(os.path.dirname(__file__), "vace_runn
 
 
 def run(dataset_name: str, target_weather: str, appearance_stage: str, particle_severity: str,
-        tea_cache_l1_thresh: float = 0.2, height: int = 480, width: int = 832) -> str:
-    """Run VACE on the run's preprocessed inputs; return the saved result path."""
+        tea_cache_l1_thresh: float = 0.2, height: int = 480, width: int = 832,
+        models_dir: str = None, offline: bool = None) -> str:
+    """Run VACE on the run's preprocessed inputs; return the saved result path.
+
+    ``models_dir`` is where the ~30 GB of VACE weights live (default ``./models``,
+    relative to the working directory). Point it at an existing copy to avoid
+    re-downloading. ``offline`` resolves those weights by path without contacting
+    the ModelScope hub. Both fall back to their env vars when not given."""
     run_dir = run_dir_for(dataset_name, target_weather, appearance_stage, particle_severity)
     prep = os.path.join(run_dir, "preprocessed_results")
     synth = os.path.join(run_dir, "synthesis_results")
@@ -52,7 +58,14 @@ def run(dataset_name: str, target_weather: str, appearance_stage: str, particle_
         "--height", str(height), "--width", str(width),
         "--tea_cache_l1_thresh", str(tea_cache_l1_thresh),
     ]
-    print(f"[synthesis] running VACE ({vace_env or 'current env'}, thresh {tea_cache_l1_thresh})")
+    # Forward the weight-location knobs; vace_runner falls back to its env vars
+    # for whichever of these we leave off.
+    if models_dir:
+        cmd += ["--models_dir", os.path.abspath(os.path.expanduser(models_dir))]
+    if offline:
+        cmd += ["--offline"]
+    print(f"[synthesis] running VACE ({vace_env or 'current env'}, thresh {tea_cache_l1_thresh}"
+          f"{', models=' + models_dir if models_dir else ''}{', offline' if offline else ''})")
     try:
         subprocess.run(cmd, check=True)
     except subprocess.CalledProcessError as e:

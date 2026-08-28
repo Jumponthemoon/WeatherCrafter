@@ -27,14 +27,19 @@ NEGATIVE_PROMPT = ("transition,静态，转场,字幕，风格，作品，"
 VACE_MODEL_ID = "Wan-AI/Wan2.1-VACE-14B"
 
 
-def _online_model_configs():
-    """Model configs that download (or reuse cached) weights via the ModelScope hub."""
+def _online_model_configs(models_dir):
+    """Model configs that download (or reuse cached) weights via the ModelScope hub.
+
+    ``local_model_path`` is passed explicitly: diffsynth otherwise defaults to
+    "./models" relative to the *current working directory*, so running from a
+    different folder would download the ~30 GB of weights all over again.
+    """
     return [
-        ModelConfig(model_id=VACE_MODEL_ID,
+        ModelConfig(model_id=VACE_MODEL_ID, local_model_path=models_dir,
                     origin_file_pattern="diffusion_pytorch_model*.safetensors", offload_device="cpu"),
-        ModelConfig(model_id=VACE_MODEL_ID,
+        ModelConfig(model_id=VACE_MODEL_ID, local_model_path=models_dir,
                     origin_file_pattern="models_t5_umt5-xxl-enc-bf16.pth", offload_device="cpu"),
-        ModelConfig(model_id=VACE_MODEL_ID,
+        ModelConfig(model_id=VACE_MODEL_ID, local_model_path=models_dir,
                     origin_file_pattern="Wan2.1_VAE.pth", offload_device="cpu"),
     ]
 
@@ -73,7 +78,7 @@ def build_pipeline(vram_limit=None, offline=False, models_dir="./models") -> "Wa
     fits tighter cards). ``None`` lets diffsynth budget the whole card.
     ``offline`` loads cached weights by local path, skipping the ModelScope hub check."""
     model_configs = (_offline_model_configs(models_dir) if offline
-                     else _online_model_configs())
+                     else _online_model_configs(models_dir))
     pipe = WanVideoPipeline.from_pretrained(
         torch_dtype=torch.bfloat16,
         device="cuda",

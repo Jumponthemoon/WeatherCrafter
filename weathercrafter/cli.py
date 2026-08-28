@@ -10,6 +10,7 @@ Stages follow the paper:
 """
 import argparse
 import math
+import os
 import random
 from dataclasses import dataclass
 from typing import Optional
@@ -127,7 +128,8 @@ def stage_simulation(args: argparse.Namespace) -> None:
 def stage_synthesis(args: argparse.Namespace) -> None:
     """Sec. 3.3 - geometry-grounded video synthesis (VACE)."""
     synthesis.run(args.dataset_name, args.target_weather, args.appearance_stage,
-                  args.particle_severity, tea_cache_l1_thresh=args.tea_cache_l1_thresh)
+                  args.particle_severity, tea_cache_l1_thresh=args.tea_cache_l1_thresh,
+                  models_dir=args.models_dir, offline=args.vace_offline)
 
 
 def cmd_pipeline(args: argparse.Namespace) -> None:
@@ -191,6 +193,19 @@ def _add_simulation_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--fps", type=int, default=DEFAULT_FPS, help="Frame rate for output videos.")
 
 
+def _add_vace_weights_args(parser: argparse.ArgumentParser) -> None:
+    """Where the VACE weights live. Shared by the `synthesis` and `pipeline` commands."""
+    parser.add_argument("--models_dir", type=str,
+                        default=os.environ.get("WEATHERCRAFTER_MODELS_DIR"),
+                        help="Directory holding the VACE weights (~30 GB). Defaults to "
+                             "./models relative to the working directory; point it at an "
+                             "existing copy to skip the download. Env: WEATHERCRAFTER_MODELS_DIR.")
+    parser.add_argument("--vace_offline", action="store_true",
+                        default=bool(os.environ.get("WEATHERCRAFTER_VACE_OFFLINE")),
+                        help="Resolve the weights by local path without contacting the "
+                             "ModelScope hub. Env: WEATHERCRAFTER_VACE_OFFLINE.")
+
+
 def _add_synthesis_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dataset_name", type=str, required=True, help="Name of the dataset to process.")
     parser.add_argument("--target_weather", type=str, required=True, choices=["rainy", "snowy"])
@@ -200,6 +215,7 @@ def _add_synthesis_args(parser: argparse.ArgumentParser) -> None:
                         choices=["light", "moderate", "heavy"])
     parser.add_argument("--tea_cache_l1_thresh", type=float, default=0.2,
                         help="VACE TeaCache threshold (larger = faster, lower quality).")
+    _add_vace_weights_args(parser)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -232,6 +248,7 @@ def build_parser() -> argparse.ArgumentParser:
                         choices=["light", "moderate", "heavy"])
     p_pipe.add_argument("--tea_cache_l1_thresh", type=float, default=0.2,
                         help="VACE TeaCache threshold for the synthesis stage.")
+    _add_vace_weights_args(p_pipe)
     p_pipe.add_argument("--stages", type=str, default=",".join(PIPELINE_STAGES),
                         help=f"Comma-separated stages to run, in order. Default: {','.join(PIPELINE_STAGES)}.")
     # Pipeline uses default sim params; expose the override knobs simulation needs.
