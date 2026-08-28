@@ -1,7 +1,7 @@
 <div align="center">
   
-## 🪄 WeatherCrafter
-### Semantic-Aware, Physics-Informed, Geometry-Grounded<br>Weather Video Synthesis
+# 🪄 WeatherCrafter
+## Semantic-Aware, Physics-Informed, Geometry-Grounded<br>Weather Video Synthesis
 
 <p align="center">
   <a href="https://arxiv.org/abs/2606.29020">
