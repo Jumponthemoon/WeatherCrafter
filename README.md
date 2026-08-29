@@ -150,5 +150,13 @@ If you find our work useful, please consider citing:
 ```
 
 ---
+## 🙏 Acknowledgements
 
+We are grateful to the works behind:
+
+- [**VACE**](https://github.com/ali-vilab/VACE) and [**Wan2.1**](https://github.com/Wan-Video/Wan2.1) — the video editing backbone.
+- [**DiffSynth-Studio**](https://github.com/modelscope/DiffSynth-Studio) — the inference stack we drive VACE through; `weathercrafter/vace_runner.py` is derived from their `run_vace.py`.
+- [**Depth Anything 3**](https://github.com/ByteDance-Seed/Depth-Anything-3) — per-frame depth, point maps, and camera poses, which ground the particle field in scene geometry.
+- [**FLUX Kontext**](https://bfl.ai/) — the image editor behind our first-frame appearance anchor.
+- [**TeaCache**](https://github.com/ali-vilab/TeaCache) — training-free acceleration that roughly halves our inference time.
 
