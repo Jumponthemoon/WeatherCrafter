@@ -47,19 +47,21 @@ We steer an **off-the-shelf** video diffusion editor with three structured prior
 - **`Jun 2026`** &nbsp;🎉 Paper accepted to **ECCV 2026**!
 - **`Jun 2026`** &nbsp;🌐 [Project page](https://jumponthemoon.github.io/w-crafter/) is live, with the supplementary demo video.
 - **`Aug 2026`** &nbsp;💻 Code Released!.
-- **`Aug 2026`** &nbsp;✅ We have halved the inference time. Each clip now takes only ~20 mins.
 
 ---
 ## 📋 Requirements
 
-- **GPU** — 48 GB recommended; synthesis peaks around 40 GB at 480×832. Measured on a
-  single RTX A6000. On smaller cards, `WEATHERCRAFTER_VACE_VRAM_LIMIT_GB` offloads part
-  of the model to CPU, trading speed for headroom.
-- **Disk** — ~80 GB for the model weights, ideally on a fast local disk since loading is
-  I/O-bound.
+- **GPU** — The synthesis pipeline relies on Wan2.1 and VACE. At a resolution of **480×832**, peak VRAM usage is around 40 GB. In principle, the memory footprint can be further reduced by adopting corresponding **lightweight or accelerated model variants**.
+- **Disk** — ~80 GB for the model weights
 - **RAM** — 32 GB minimum, 64 GB comfortable.
 - **CUDA 12.4**, **Python 3.10–3.12**.
 - **OpenAI and Black Forest Labs API keys**, for the `anchoring` stage only.
+   
+## 🕐 Runtime
+
+| preprocess | anchoring | simulation | synthesis | Total |
+|:----------:|:---------:|:----------:|:-------------:|:-----:|
+| ~1.5 min | ~35 s | ~1.8 min | ~20 min | ~25 min |
 
 ## 🛠️ Installation
 
